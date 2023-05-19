@@ -1,7 +1,13 @@
 import { Button } from "@mantine/core";
+import { QuestionItem } from "./components/QuestionsItem";
+import { objectsInterface } from "./GameData";
+// import { QuestionItem } from "./components/QuestionsItem";
 
 export const GamePage=(
-    {functions}:any
+    {functions,objects}:{
+        functions:any,
+        objects:objectsInterface
+    }
 )=>{
 
     const start = ()=>{
@@ -9,7 +15,13 @@ export const GamePage=(
 
     }
 
+    const count = objects.count;
+
     console.log("functions,",functions);
+    console.log('objects',objects);
+    console.log('step',count);
+
+    console.log("{count}",{count});
 
     const handleStart= () =>{
         console.log("button clicked");
@@ -18,8 +30,17 @@ export const GamePage=(
     };
     return(
         <>
-            <h1>Start the game by clicking on the button here</h1>
-            <Button onClick={handleStart}>Start Here</Button>
+        {count == 0 ? 
+            <div><h1>Start the game by clicking on the button here</h1>
+            <Button onClick={handleStart}>Start Here</Button></div>:
+            
+            
+            <QuestionItem step={count} />
+            
+           // <QuestionItem step={step}/>>
+        }
+           
+            
         </>
     )
 }

@@ -4,16 +4,16 @@
 
         if (!res.ok){
             throw {
-                message:'Failed to fetch cards',
+                message:'Failed to fetch deck',
                 statusText:res.statusText,
                 status: res.status
             }
         }
-        const data = await res.json();
+        const deck = await res.json();
 
-        console.log('cards',data);
+        console.log('deck',deck);
     
-        return data;
+        return deck;
        
     }
 
