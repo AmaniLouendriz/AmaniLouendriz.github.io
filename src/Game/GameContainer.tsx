@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getNewCard, getNewDeck } from "./GameApi"
 import { GamePage } from "./GamePage"
-import { questions,objectsInterface, QuestionInterface } from "./GameData";
+import { questions,objectsInterface, QuestionInterface, cardInterface } from "./GameData";
 
 export const GameContainer = ()=>{
 
@@ -21,6 +21,17 @@ export const GameContainer = ()=>{
     
     const [step,setStep] = useState<number>(0);
     const [questionsState, setQuestionsState] = useState(getInitialState);
+    const [drawnCards,setDrawnCards] = useState<cardInterface[]>([]);
+
+
+    // filling this empty array with the drawn cards coming from the api
+    let drawnCardsCopy:cardInterface[] = [];
+
+    useEffect(()=>{
+
+        setDrawnCards(drawnCardsCopy);
+
+    },[questionsState]);
 
     const updateState = (questionId:string, questionsState:Record<string,{[key:string]:string}>)=>{
         const updatedState = {...questionsState};
@@ -30,22 +41,43 @@ export const GameContainer = ()=>{
 
         console.log('questionId',questionId);
 
+        const answer:string = updatedState[questionId].answer;
+
+        next(questionId,answer);
+
+        
+    }
+
+    // Building a next functions would be better
+
+    const next = (questionId:any,value:string)=>{
+
+        //TODO: check why questionId is an array
+
         if(questionId[0] === '1'){
-            checkColor(updatedState[questionId].answer);
+            console.log('user answer',value);
+            checkColor(value);
         }
         // else if (questionId === '2'){
         //     checkComparaison();
         // }else if (questionId === '3'){
         //     checkForm();
         // }
+
+
     }
 
     const checkColor = async (value:string)=>{
         const card = await drawCard();
-        // console.log('suit of the drawn card',suit);
+        console.log('the drawn card',card);
+        console.log('actual drawn cards',drawnCards);
+
+        // determining the suit of the drawn color
         const suit = card.suit;
 
         let suitColor:string;
+
+        // according to the suit, the color can be determined
 
         if(suit === 'SPADES' || suit === 'CLUBS'){
             suitColor = 'Black';
@@ -55,6 +87,8 @@ export const GameContainer = ()=>{
 
         const res = suitColor === value
 
+        // The res give the result of the user's guess, here there's a redirection to the appropriate step
+
         if (res === true){
             console.log('Nice guess,continue the game!')
             setStep(2);
@@ -62,17 +96,20 @@ export const GameContainer = ()=>{
             console.log('Bad guess,please restart!')
             setStep(0);
         }
-
-
     }
 
     const drawCard = async()=>{
         try{
+
+            // drawing a new card from the api
             const newCard = await getNewCard();
 
             // console.log('newCard from inside the container',newCard);
 
             if (newCard.success === true){
+
+                drawnCards.push(newCard.cards[0]);
+                
                 return newCard.cards[0];
             }
 

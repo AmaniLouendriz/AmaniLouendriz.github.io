@@ -17,15 +17,20 @@ export const QuestionItem = ({objects,updateState}:{objects:objectsInterface,upd
 
 
     // getting the options in the drop down menu for the first question
-    const stage1Options:string[] = [];
-    questions[0].answerOption.map((answerOption:answerOptionType)=>{
-          stage1Options.push(answerOption.answerText);
+    const stageOptions:string[] = [];
+    questions[count-1].answerOption.map((answerOption:answerOptionType)=>{
+          stageOptions.push(answerOption.answerText);
     })
 
     // this function handles the change of all questions after being aswered
     const handleChange = (value:string)=>{
         setSelectValue(value);
         updateState([questions[count-1].id],{
+            ...state,
+            [questions[count-1].id]:{'answer':value}
+        })
+
+        setState({
             ...state,
             [questions[count-1].id]:{'answer':value}
         })
@@ -42,12 +47,17 @@ export const QuestionItem = ({objects,updateState}:{objects:objectsInterface,upd
 
                     <h3>{questions[count-1].questionText}</h3>
                 
-                    <NativeSelect data={stage1Options} value={selectValue} 
+                    <NativeSelect data={stageOptions} value={selectValue} 
                     onChange={(event)=>handleChange(event.currentTarget.value)}/>
                 
                 </>)
             case 2:
-                return(<></>)
+                return(<> 
+                
+                    <h3>{questions[count-1].questionText}</h3>
+                
+                    <NativeSelect data={stageOptions} value={selectValue} 
+                    onChange={(event)=>handleChange(event.currentTarget.value)}/></>)
             case 3:
                 return(<></>)
             default:

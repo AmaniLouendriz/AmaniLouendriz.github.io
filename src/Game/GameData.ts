@@ -17,6 +17,14 @@ export interface objectsInterface{
     getInitialState: Record<string,{[key:string]:string}>;
 }
 
+export interface cardInterface{
+    code:string,
+    image:string,
+    images:Record<string,string>;
+    suit:string,
+    value:string,
+}
+
 
 export const questions:QuestionInterface[]=[
     {
