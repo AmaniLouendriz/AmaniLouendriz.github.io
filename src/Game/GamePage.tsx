@@ -16,6 +16,7 @@ export const GamePage=(
     }
 
     const count = objects.count;
+    const questions = objects.questions;
 
     console.log("functions,",functions);
     console.log('objects',objects);
@@ -35,7 +36,7 @@ export const GamePage=(
             <Button onClick={handleStart}>Start Here</Button></div>:
             
             
-            <QuestionItem step={count} />
+            <QuestionItem objects={objects} updateState={functions.updateState} />
             
            // <QuestionItem step={step}/>>
         }
