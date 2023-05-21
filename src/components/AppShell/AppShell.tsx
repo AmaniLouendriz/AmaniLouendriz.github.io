@@ -1,7 +1,9 @@
 import { AppShellProps, Footer, Header,AppShell as Shell } from "@mantine/core"
-import { AppHeader } from "../AppHeader"
+import { AppHeader } from "../AppHeader/AppHeader"
 import { Outlet } from "react-router-dom";
 import { useStyles } from "./AppShell.styles";
+import { AppFooter } from "../Footer/AppFooter";
+
 
 export const AppShell = ()=>{
 
@@ -19,8 +21,8 @@ export const AppShell = ()=>{
             }
         
             footer={
-                <Footer height={70} p="md">
-                     Made by Amani
+                <Footer height={70} p="md" className={classes.footer}>
+                    <AppFooter/>
                 </Footer>
             }>
 

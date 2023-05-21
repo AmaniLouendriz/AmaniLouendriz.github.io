@@ -1,7 +1,7 @@
 import { Center, Title, UnstyledButton } from "@mantine/core"
 import { useStyles } from "./AppHeader.styles";
 
-import {logo} from '../assets'
+import {logo} from '../../assets'
 
 export const AppHeader = ()=>{
 
@@ -17,10 +17,6 @@ export const AppHeader = ()=>{
 
             <UnstyledButton className={classes.link}>
                 <Center>Feedback</Center>
-
-
-
-
             </UnstyledButton>
 
         </div>      
