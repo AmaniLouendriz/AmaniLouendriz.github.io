@@ -103,3 +103,21 @@ export const questions:QuestionInterface[]=[
 
     }
 ]
+
+
+export const numericalValues:Record<string,number> = {
+    'ACE':1,
+    '2':2,
+    '3':3,
+    '4':4,
+    '5':5,
+    '6':6,
+    '7':7,
+    '8':8,
+    '9':9,
+    '10':10,
+    'KING':12,
+    'QUEEN':13,
+    'JACK':14,
+
+}

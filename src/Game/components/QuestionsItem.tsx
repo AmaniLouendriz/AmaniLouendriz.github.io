@@ -59,7 +59,13 @@ export const QuestionItem = ({objects,updateState}:{objects:objectsInterface,upd
                     <NativeSelect data={stageOptions} value={selectValue} 
                     onChange={(event)=>handleChange(event.currentTarget.value)}/></>)
             case 3:
-                return(<></>)
+                return(<>
+
+                    <h3>{questions[count-1].questionText}</h3>
+                
+                    <NativeSelect data={stageOptions} value={selectValue} 
+                    onChange={(event)=>handleChange(event.currentTarget.value)}/>                
+                    </>)
             default:
                 return<></>
         }
