@@ -1,18 +1,22 @@
-import React from 'react';
 import { GameContainer } from './Game/GameContainer';
 import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom';
-import { AppHeader } from './components/AppHeader';
+import { AppShell } from './components/AppShell';
 
 
 function App() {
 
   const router = createBrowserRouter(createRoutesFromElements(
 
-    <Route path='/' element={<AppHeader/>}>
+    <Route path='' element={<AppShell/>}>
+
+    {/* <Route path='/' element={<AppHeader/>}> */}
     
       <Route index element={<GameContainer/>}/>
 
+    {/* </Route> */}
+
     </Route>
+
 
 
   ))

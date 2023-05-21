@@ -1,6 +1,7 @@
-import { Header } from "@mantine/core"
-import { Outlet } from "react-router-dom"
+import { Center, Title, UnstyledButton } from "@mantine/core"
 import { useStyles } from "./AppHeader.styles";
+
+import {logo} from '../assets'
 
 export const AppHeader = ()=>{
 
@@ -10,16 +11,19 @@ export const AppHeader = ()=>{
 
     return(
 
-        <>
-            <Header height={70} className={classes.prop}>
+        <div className={classes.root}>
+            <img src={logo} alt="logo" className={classes.logo}/>
+            <Title className={classes.title}>Guess What?</Title>
 
-                Card Game
+            <UnstyledButton className={classes.link}>
+                <Center>Feedback</Center>
 
-            </Header>
 
-            <Outlet/>
 
-        </>      
+
+            </UnstyledButton>
+
+        </div>      
     )
 
 
