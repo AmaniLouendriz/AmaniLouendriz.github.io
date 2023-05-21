@@ -1,6 +1,7 @@
 import { Button } from "@mantine/core";
 import { QuestionItem } from "./components/QuestionsItem";
 import { objectsInterface } from "./GameData";
+import { LandingPage } from "./components/LandingPage/LandingPage";
 
 export const GamePage=(
     {functions,objects}:{
@@ -23,21 +24,11 @@ export const GamePage=(
 
     // console.log("{count}",{count});
 
-    const handleStart= () =>{
-        console.log("button clicked");
-        
-        start();
-    };
+ 
     return(
         <>
         {count == 0 ? 
-            <div>
-                <h1>Start the game by clicking on the button here</h1>
-                <Button onClick={handleStart}>Start Here</Button>
-                
-            </div>
-                
-                
+            <LandingPage start={start}/>       
             :
             
             
