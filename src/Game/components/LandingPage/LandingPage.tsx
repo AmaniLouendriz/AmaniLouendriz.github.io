@@ -1,7 +1,7 @@
 import { Button,Text, Title,Image } from "@mantine/core"
 import { useStyles } from "./LandingPage.styles";
 import { CardComponent } from "../CardComponent/CardComponent";
-import { cardImage } from "../../../assets";
+import { cardImage, cardImage2 } from "../../../assets";
 import { useMediaQuery } from "@mantine/hooks";
 
 export const LandingPage = ({start}:{start:()=>any})=>{
@@ -51,14 +51,28 @@ export const LandingPage = ({start}:{start:()=>any})=>{
             </div>
 
             <div className={classes.column}>
-                <Image 
 
-                    height={'50vh'}
-                    width={'auto'}
-                    alt="card picture"
-                    fit="fill"
-                    src={cardImage}
-                    className={classes.staticImage}/>
+                <div className={classes.row}>
+                    <Image 
+
+                        height={'50vh'}
+                        width={'auto'}
+                        alt="card picture"
+                        fit="fill"
+                        src={cardImage}
+                        className={classes.staticImage}/>
+
+
+                    <Image 
+
+                        height={'50vh'}
+                        width={'auto'}
+                        alt="card picture"
+                        fit="fill"
+                        src={cardImage2}
+                        className={classes.staticImage}/>
+
+                </div>
             </div>
 
 

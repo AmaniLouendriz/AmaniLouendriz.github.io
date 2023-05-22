@@ -14,41 +14,20 @@ export const GamePage=(
 
     const start = ()=>{
         return functions.start();
-
     }
 
     const cancel = ()=>{
         return functions.cancel();
     }
 
+    const nextGame = (value:number) => {return functions.nextGame(value)};
+
+
     const count = objects.count;
 
     const success = objects.success;
 
-
     const cards = objects.drawnCards;
-
-
-
-    const nextGame = (value:number) => {return functions.nextGame(value)};
-
-
-
-
-    //const [opened, setOpened] = useState(false);
-
-    // const questions = objects.questions;
-
-    // console.log("functions,",functions);
-    // console.log('objects',objects);
-    // console.log('step',count);
-
-    // console.log("{count}",{count});
-
-
-    //console.log('success',success);
-
-
  
     return(
         <>
@@ -58,7 +37,6 @@ export const GamePage=(
             <LandingPage start={start}/> 
                 : count === 4 ? <FinalPage cards={cards} cancel={cancel}/>: 
                     <QuestionItem objects={objects} functions={functions} />   
-
         }
 
         {success != -1?

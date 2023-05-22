@@ -109,6 +109,7 @@ export const questions:QuestionInterface[]=[
     }
 ]
 
+// my own representation for the values of the cards
 
 export const numericalValues:Record<string,number> = {
     'ACE':1,
