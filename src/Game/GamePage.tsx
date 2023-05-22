@@ -1,7 +1,8 @@
-import { Button } from "@mantine/core";
 import { QuestionItem } from "./components/QuestionsItem";
 import { objectsInterface } from "./GameData";
 import { LandingPage } from "./components/LandingPage/LandingPage";
+
+import { SuccessMessage } from "./components/SuccessMessage";
 
 export const GamePage=(
     {functions,objects}:{
@@ -15,7 +16,23 @@ export const GamePage=(
 
     }
 
+    const cancel = ()=>{
+        return functions.cancel();
+    }
+
     const count = objects.count;
+
+    const success = objects.success;
+
+
+
+    const nextGame = (value:number) => {return functions.nextGame(value)};
+
+
+
+
+    //const [opened, setOpened] = useState(false);
+
     // const questions = objects.questions;
 
     // console.log("functions,",functions);
@@ -24,20 +41,23 @@ export const GamePage=(
 
     // console.log("{count}",{count});
 
+
+    //console.log('success',success);
+
+
  
     return(
         <>
-        {count == 0 ? 
-            <LandingPage start={start}/>       
-            :
-            
-            
-            <QuestionItem objects={objects} updateState={functions.updateState} />
-            
-           // <QuestionItem step={step}/>>
+
+
+        {count === 0?
+            <LandingPage start={start}/> :
+                <QuestionItem objects={objects} functions={functions} />   
         }
-           
-            
+
+        {success != -1?
+                <SuccessMessage successValue={success} nextGame={nextGame} step={count} cancel={cancel}/>:<></>        
+        }
         </>
     )
 }

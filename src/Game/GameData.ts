@@ -15,6 +15,7 @@ export interface objectsInterface{
     count:number;
     questions:QuestionInterface[];
     getInitialState: Record<string,{[key:string]:string}>;
+    success:number;
 }
 
 export interface cardInterface{

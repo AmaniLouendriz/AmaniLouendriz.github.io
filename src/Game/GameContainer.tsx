@@ -23,6 +23,9 @@ export const GameContainer = ()=>{
     const [questionsState, setQuestionsState] = useState(getInitialState);
     const [drawnCards,setDrawnCards] = useState<cardInterface[]>([]);
 
+    const [success,setSuccess] = useState<number>(-1);// success == 0 means that the player guessed 
+    //incorrectly, success == 1 means the player guessed correctly, success == -1 means that the answer isnt processed yet...
+
 
     // filling this empty array with the drawn cards coming from the api
     //let drawnCardsCopy:cardInterface[] = [];
@@ -51,10 +54,11 @@ export const GameContainer = ()=>{
 
         const answer:string = updatedState[questionId].answer;
 
-        next(questionId,answer);
 
         
     }
+
+
 
     // Building a next functions would be better
 
@@ -119,7 +123,7 @@ export const GameContainer = ()=>{
             setStep(0);
         }else{
             console.log('nice guess! please continue');
-            setStep(3)
+            //setStep(3)
         }
     }
 
@@ -143,14 +147,17 @@ export const GameContainer = ()=>{
 
         const res = suitColor === value
 
-        // The res give the result of the user's guess, here there's a redirection to the appropriate step
+        // The res gives the result of the user's guess, here there's a redirection to the appropriate step
 
         if (res === true){
             console.log('Nice guess,continue the game!')
-            setStep(2);
+            //setStep(2);
+            setSuccess(1);
+
         }else{
             console.log('Bad guess,please restart!')
-            setStep(0);
+            //setStep(0);
+            setSuccess(0);
         }
     }
 
@@ -205,23 +212,56 @@ export const GameContainer = ()=>{
     }
 
 
+    const cancelGame = ()=>{
+        setStep(0);
+    }
+
+
+    const nextGame =(value:number)=>{
+
+        console.log('in the next game fct');
+
+        console.log('value',value);
+
+        console.log('step',step);
+
+        if (value === step+1){
+            console.log('changing now')
+            setStep(value);
+        }else{console.log('error, cant proceed')}
+
+    }
+
+
 
 
 
     // Here declaring an object of functions, and putting all the functions there, then passing them as a prop to the GamePage
 
     const functions:any={};
-    const objects:objectsInterface={count:0,questions:[],getInitialState:getInitialState};
+    const objects:objectsInterface={count:0,questions:[],getInitialState:getInitialState,success:-1};
 
     functions.start = ()=>{
         startGame();
     } 
 
     functions.updateState = updateState;
+    functions.cancel = ()=>{
+        cancelGame();
+    }
+
+    functions.next = (id:string,value:string)=>{
+        next(id,value);
+    }
+
+    functions.nextGame = (value:number)=>{
+        nextGame(value);
+    }
 
     objects.count = step;
     objects.questions = [...questions];
     objects.getInitialState = {...getInitialState};
+    objects.success=success;
 
 
     return <GamePage functions={functions} objects={objects}/>

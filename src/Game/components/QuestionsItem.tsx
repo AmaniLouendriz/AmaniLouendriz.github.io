@@ -1,19 +1,35 @@
-import { NativeSelect } from "@mantine/core";
+import { Button, Modal, NativeSelect, Title } from "@mantine/core";
 
-import { QuestionInterface, answerOptionType, objectsInterface } from "../GameData";
+import { answerOptionType, objectsInterface } from "../GameData";
 import { useState } from "react";
+import { useStyles } from "./QuestionItem.styles";
+import { useDisclosure } from "@mantine/hooks";
 
 
 
-export const QuestionItem = ({objects,updateState}:{objects:objectsInterface,updateState:any})=>{
+export const QuestionItem = ({objects,functions}:{objects:objectsInterface,functions:any})=>{
+
+
+    const {classes} = useStyles();
 
     const count = objects.count;
     const questions = objects.questions;
     const questionsState = objects.getInitialState;
 
+
+    const updateState = functions.updateState;
+
+    const cancel = functions.cancel;
+
+    const next = functions.next;
+
     const [selectValue,setSelectValue] = useState("");
 
     const [state,setState] = useState(questionsState);
+
+
+
+    
 
 
     // getting the options in the drop down menu for the first question
@@ -39,18 +55,48 @@ export const QuestionItem = ({objects,updateState}:{objects:objectsInterface,upd
     }
 
 
+    const handleCancel = ()=>{
+
+        console.log('cancel button clicked');
+        cancel();
+
+
+    }
+
+    const handleNext = ()=>{
+
+        console.log('next button clicked');
+
+        next(questions[count-1].id,selectValue);
+
+
+    }
+
+
     const getQuestion = (count:number|null)=>{
         switch(count){
             case 1:
                 return(
-                <>
+                <div className={classes.section}>
 
-                    <h3>{questions[count-1].questionText}</h3>
+                    <Title fz={'lg'} className={classes.question}>{questions[count-1].questionText}</Title>
                 
-                    <NativeSelect data={stageOptions} value={selectValue} 
-                    onChange={(event)=>handleChange(event.currentTarget.value)}/>
+                    <NativeSelect  className={classes.select} radius={"lg"}
+                    
+                    data={stageOptions} value={selectValue} 
+                    onChange={(event)=>handleChange(event.currentTarget.value)}
+                    
+                    //error="Please choose at least one item"
+                    />
+
+                    <div className={classes.btns}>
+                        <Button className={classes.cancelBtn} onClick={handleCancel}>Cancel</Button>
+                        <Button className={classes.nextBtn} onClick={handleNext}>Check</Button>
+                    </div>
+
+
                 
-                </>)
+                </div>)
             case 2:
                 return(<> 
                 
@@ -74,9 +120,8 @@ export const QuestionItem = ({objects,updateState}:{objects:objectsInterface,upd
 
 
     return(
-        <>
-        {getQuestion(count)}
-        </>
+            <>{getQuestion(count)}</>
+            
 
     )
         

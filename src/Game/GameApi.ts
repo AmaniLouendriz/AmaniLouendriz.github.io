@@ -27,6 +27,7 @@
     // Getting card from the deck
 
     export const getNewCard = async()=>{
+        if(deckId === null){getNewDeck()}
         const res = await fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
 
         if(!res.ok){
