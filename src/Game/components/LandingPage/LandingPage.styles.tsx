@@ -88,6 +88,18 @@ export const useStyles = createStyles((theme)=>({
         position:'relative',
     },
 
+    staticImage:{
+
+        "&:hover": {
+            transform:'rotateY(50deg)',
+            transition: 'transform 2s ease'
+        },
+
+        boxShadow:'5px 5px #caf0f8',
+
+
+    },
+
 
 
     

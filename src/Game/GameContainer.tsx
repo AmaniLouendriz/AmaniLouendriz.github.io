@@ -91,10 +91,10 @@ export const GameContainer = ()=>{
 
         if (res === true){
             console.log('congrats! You won the game.')
-            //setStep(4);
+            setStep(4);
         }else{
             console.log('sorry.. you guess was incorrect. Please restart.')
-            setStep(0);
+            setSuccess(0);
         }
     }
 
@@ -120,10 +120,10 @@ export const GameContainer = ()=>{
 
         if (res === false){
             console.log('bad guess! please restart.');
-            setStep(0);
+            setSuccess(0);
         }else{
             console.log('nice guess! please continue');
-            //setStep(3)
+            setSuccess(1);
         }
     }
 
@@ -213,6 +213,7 @@ export const GameContainer = ()=>{
 
 
     const cancelGame = ()=>{
+        setSuccess(-1);
         setStep(0);
     }
 
@@ -227,7 +228,9 @@ export const GameContainer = ()=>{
 
         if (value === step+1){
             console.log('changing now')
+            setSuccess(-1);
             setStep(value);
+            
         }else{console.log('error, cant proceed')}
 
     }
@@ -239,7 +242,7 @@ export const GameContainer = ()=>{
     // Here declaring an object of functions, and putting all the functions there, then passing them as a prop to the GamePage
 
     const functions:any={};
-    const objects:objectsInterface={count:0,questions:[],getInitialState:getInitialState,success:-1};
+    const objects:objectsInterface={count:0,questions:[],getInitialState:getInitialState,success:-1,drawnCards:[]};
 
     functions.start = ()=>{
         startGame();
@@ -262,6 +265,7 @@ export const GameContainer = ()=>{
     objects.questions = [...questions];
     objects.getInitialState = {...getInitialState};
     objects.success=success;
+    objects.drawnCards=drawnCards;
 
 
     return <GamePage functions={functions} objects={objects}/>

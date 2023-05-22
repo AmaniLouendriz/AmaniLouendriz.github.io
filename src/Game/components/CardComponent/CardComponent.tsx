@@ -1,19 +1,19 @@
-import { cardImage } from "../../../assets";
+import { cardInterface } from "../../GameData";
 import { useStyles } from "./CardComponent.styles";
 
-import { Card,Group,Image,Badge,Text,Button, List } from "@mantine/core";
+import { Card,Group,Image,Text, List } from "@mantine/core";
 
-export const CardComponent = ({image}:{image:string})=>{
+export const CardComponent = ({card}:{card:cardInterface})=>{
     const {classes} = useStyles();
 
 
     return(
 
 
-        <Card shadow="sm" padding="lg" radius="md" withBorder className={classes.card}>
+        <Card shadow="sm" padding="md" radius="md" withBorder className={classes.card}>
           <Card.Section>
             <Image
-              src={image}
+              src={card?.image}
               height={'auto'}
               alt="card picture"
               fit="fill"
@@ -27,9 +27,9 @@ export const CardComponent = ({image}:{image:string})=>{
           <Text size="sm" color="dimmed">
 
           <List>
-            <List.Item><b>Color:</b> Red</List.Item>
-            <List.Item><b>Value:</b> 6</List.Item>
-            <List.Item><b>Suit:</b> Heart</List.Item>
+            <List.Item><b>Code</b> {card?.code}</List.Item>
+            <List.Item><b>Value:</b> {card?.value}</List.Item>
+            <List.Item><b>Suit:</b> {card?.suit}</List.Item>
           </List>
 
           </Text>

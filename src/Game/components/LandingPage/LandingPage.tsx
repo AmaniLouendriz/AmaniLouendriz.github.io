@@ -1,6 +1,6 @@
-import { Button,Text, Title } from "@mantine/core"
+import { Button,Text, Title,Image } from "@mantine/core"
 import { useStyles } from "./LandingPage.styles";
-import { CardComponent } from "./CardComponent";
+import { CardComponent } from "../CardComponent/CardComponent";
 import { cardImage } from "../../../assets";
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -51,7 +51,14 @@ export const LandingPage = ({start}:{start:()=>any})=>{
             </div>
 
             <div className={classes.column}>
-                <CardComponent image={cardImage}/>
+                <Image 
+
+                    height={'50vh'}
+                    width={'auto'}
+                    alt="card picture"
+                    fit="fill"
+                    src={cardImage}
+                    className={classes.staticImage}/>
             </div>
 
 

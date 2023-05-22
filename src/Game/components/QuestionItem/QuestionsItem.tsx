@@ -1,6 +1,6 @@
 import { Button, Modal, NativeSelect, Title } from "@mantine/core";
 
-import { answerOptionType, objectsInterface } from "../GameData";
+import { answerOptionType, objectsInterface } from "../../GameData";
 import { useState } from "react";
 import { useStyles } from "./QuestionItem.styles";
 import { useDisclosure } from "@mantine/hooks";
@@ -98,20 +98,53 @@ export const QuestionItem = ({objects,functions}:{objects:objectsInterface,funct
                 
                 </div>)
             case 2:
-                return(<> 
-                
-                    <h3>{questions[count-1].questionText}</h3>
-                
-                    <NativeSelect data={stageOptions} value={selectValue} 
-                    onChange={(event)=>handleChange(event.currentTarget.value)}/></>)
-            case 3:
-                return(<>
+                return(
+                    <div className={classes.section}>
 
-                    <h3>{questions[count-1].questionText}</h3>
+                    <Title fz={'lg'} className={classes.question}>{questions[count-1].questionText}</Title>
                 
-                    <NativeSelect data={stageOptions} value={selectValue} 
-                    onChange={(event)=>handleChange(event.currentTarget.value)}/>                
-                    </>)
+                    <NativeSelect  className={classes.select} radius={"lg"}
+                    
+                    data={stageOptions} value={selectValue} 
+                    onChange={(event)=>handleChange(event.currentTarget.value)}
+                    
+                    //error="Please choose at least one item"
+                    />
+
+                    <div className={classes.btns}>
+                        <Button className={classes.cancelBtn} onClick={handleCancel}>Cancel</Button>
+                        <Button className={classes.nextBtn} onClick={handleNext}>Check</Button>
+                    </div>
+
+
+                
+                </div>
+                    
+                    
+                )
+            case 3:
+                return(
+                    <div className={classes.section}>
+
+                    <Title fz={'lg'} className={classes.question}>{questions[count-1].questionText}</Title>
+                
+                    <NativeSelect  className={classes.select} radius={"lg"}
+                    
+                    data={stageOptions} value={selectValue} 
+                    onChange={(event)=>handleChange(event.currentTarget.value)}
+                    
+                    //error="Please choose at least one item"
+                    />
+
+                    <div className={classes.btns}>
+                        <Button className={classes.cancelBtn} onClick={handleCancel}>Cancel</Button>
+                        <Button className={classes.nextBtn} onClick={handleNext}>Check</Button>
+                    </div>
+
+
+                
+                </div>
+                )
             default:
                 return<></>
         }

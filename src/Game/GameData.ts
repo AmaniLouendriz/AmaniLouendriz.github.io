@@ -11,13 +11,6 @@ export interface answerOptionType{
 }
 
 
-export interface objectsInterface{
-    count:number;
-    questions:QuestionInterface[];
-    getInitialState: Record<string,{[key:string]:string}>;
-    success:number;
-}
-
 export interface cardInterface{
     code:string,
     image:string,
@@ -25,6 +18,17 @@ export interface cardInterface{
     suit:string,
     value:string,
 }
+
+
+export interface objectsInterface{
+    count:number;
+    questions:QuestionInterface[];
+    getInitialState: Record<string,{[key:string]:string}>;
+    success:number;
+    drawnCards:cardInterface[];
+}
+
+
 
 
 export const questions:QuestionInterface[]=[
