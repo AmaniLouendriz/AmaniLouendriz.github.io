@@ -1,5 +1,8 @@
 import { Button,Text, Title } from "@mantine/core"
 import { useStyles } from "./LandingPage.styles";
+import { CardComponent } from "./CardComponent";
+import { cardImage } from "../../../assets";
+import { useMediaQuery } from "@mantine/hooks";
 
 export const LandingPage = ({start}:{start:()=>any})=>{
 
@@ -9,6 +12,8 @@ export const LandingPage = ({start}:{start:()=>any})=>{
         
         start();
     };
+
+
 
 
     const {classes} = useStyles();
@@ -39,14 +44,14 @@ export const LandingPage = ({start}:{start:()=>any})=>{
                     The game is also waiting for exciting updates in the future. So, stay tuned!
                 </Text>
 
-                <Button className={classes.startBtn} onClick={handleStart}>Start Here</Button>
+                <Button className={classes.startBtn} onClick={handleStart}>Start</Button>
 
 
 
             </div>
 
             <div className={classes.column}>
-                the stepper goes here
+                <CardComponent image={cardImage}/>
             </div>
 
 
