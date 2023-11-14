@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/AmaniLouendriz/CardGame/static/js/main.c77a639d.js",
-    "static/js/787.9c804d05.chunk.js": "/AmaniLouendriz/CardGame/static/js/787.9c804d05.chunk.js",
-    "static/media/logo.jpg": "/AmaniLouendriz/CardGame/static/media/logo.f24907994de0840def36.jpg",
-    "static/media/cardHome2.png": "/AmaniLouendriz/CardGame/static/media/cardHome2.47c838bc21e62d5c3f50.png",
-    "static/media/cardHome.png": "/AmaniLouendriz/CardGame/static/media/cardHome.c419446076d0bc7de77d.png",
-    "index.html": "/AmaniLouendriz/CardGame/index.html",
-    "main.c77a639d.js.map": "/AmaniLouendriz/CardGame/static/js/main.c77a639d.js.map",
-    "787.9c804d05.chunk.js.map": "/AmaniLouendriz/CardGame/static/js/787.9c804d05.chunk.js.map"
+    "main.js": "/CardGame/static/js/main.cfa1388b.js",
+    "static/js/787.9c804d05.chunk.js": "/CardGame/static/js/787.9c804d05.chunk.js",
+    "static/media/logo.jpg": "/CardGame/static/media/logo.f24907994de0840def36.jpg",
+    "static/media/cardHome2.png": "/CardGame/static/media/cardHome2.47c838bc21e62d5c3f50.png",
+    "static/media/cardHome.png": "/CardGame/static/media/cardHome.c419446076d0bc7de77d.png",
+    "index.html": "/CardGame/index.html",
+    "main.cfa1388b.js.map": "/CardGame/static/js/main.cfa1388b.js.map",
+    "787.9c804d05.chunk.js.map": "/CardGame/static/js/787.9c804d05.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.c77a639d.js"
+    "static/js/main.cfa1388b.js"
   ]
 }
