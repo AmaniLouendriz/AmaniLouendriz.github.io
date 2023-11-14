@@ -1,3 +1,5 @@
+**Have a quick glance at the game here: https://amanilouendriz.github.io/** 
+(Some images have trouble being rendered, but the functionality is totally fine, those issues are being looked into)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
